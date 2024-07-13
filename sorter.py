@@ -6,7 +6,8 @@ class Sorter:
     A super class to bundle the sorter classes.
     """
     def __init__(self, itemContainer: ItemContainer, shuffle_method) -> None:
-        itemContainer = shuffle_method(itemContainer)
+        if shuffle_method:
+            itemContainer = shuffle_method(itemContainer)
         self.itemContainer = itemContainer
         self.items = itemContainer.get_items()
 
@@ -23,7 +24,7 @@ class Sorter:
             animation_filename: str = "sorting_animation.mp4"
     ) -> None:
         """
-        Do a full maze generation run (possibly save the animation of the generation).
+        Do a full sorting run (possibly save the animation of the sorting).
         """
         if not animate:
             self.sort()
