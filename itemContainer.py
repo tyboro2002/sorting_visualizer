@@ -1,5 +1,7 @@
 import random
 
+from matplotlib import pyplot as plt
+
 
 class ItemContainer:
     def __init__(self, items=None, length=None):
@@ -21,6 +23,18 @@ class ItemContainer:
 
     def random_shuffle(self):
         random.shuffle(self.items)
+        return self
+
+    def reverse(self):
+        self.items = self.items[::-1]
+        return self
 
     def __len__(self):
         return self.length
+
+    def save(self, path):
+        fig, ax = plt.subplots(figsize=(max(len(self.items) / 5, 10), max(len(self.items) / 5, 10)))
+        ax.set_xticks([]), ax.set_yticks([])
+        ax.bar(range(len(self.items)), self.items, align="edge")
+        plt.savefig(path, bbox_inches='tight')
+        plt.close()

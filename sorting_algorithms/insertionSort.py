@@ -4,34 +4,39 @@ from itemContainer import ItemContainer
 from sorter import Sorter
 
 
-class BubbleSort(Sorter):
+class InsertionSort(Sorter):
     def __init__(self, itemContainer: ItemContainer, shuffle_method):
         super().__init__(itemContainer, shuffle_method)
         self.states = []
-        self.current_index = len(self.items) - 1
-        self.is_sorted = False
         self.frames = []
+        self.is_sorted = False
+        self.i = 1
 
     def sort_step(self, ax2=None, animation=False):
-
         if self.is_sorted:
             return False
 
-        swapped = False
-        for i in range(self.current_index):
-            if animation:
-                self.add_image(ax2, highlight=(i, i+1))
-            if self.items[i] > self.items[i + 1]:
-                self.items[i], self.items[i + 1] = self.items[i + 1], self.items[i]
-                swapped = True
-                self.states.append((self.items, i, i + 1))  # Store items and indices of swapped bars
+        if self.i < len(self.items):
+            key = self.items[self.i]
+            j = self.i - 1
+
+            while j >= 0 and self.items[j] > key:
+                self.items[j + 1] = self.items[j]
+                j -= 1
                 if animation:
-                    self.add_image(ax2, highlight=(i, i+1))
-        if not swapped:
-            self.is_sorted = True
+                    self.add_image(ax2, highlight=(j + 1, self.i))
+
+            self.items[j + 1] = key
+            self.states.append((self.items[:], j + 1, self.i))
+
+            if animation:
+                self.add_image(ax2, highlight=(j + 1, self.i))
+
+            self.i += 1
         else:
-            self.current_index -= 1
-        return swapped
+            self.is_sorted = True
+
+        return not self.is_sorted
 
     def add_image(self, ax, highlight=None):
         ax.set_xticks([]), ax.set_yticks([])
@@ -39,7 +44,7 @@ class BubbleSort(Sorter):
         im2 = ax.bar(range(len(self.items)), self.items, align="edge", color='skyblue')
         if highlight:
             for e in highlight:
-                im2[e].set_color('orange')  # Highlight swapped bar 1
+                im2[e].set_color('orange')  # Highlight swapped bars
         self.frames.append(im2)
 
     def sort(self):
@@ -58,11 +63,7 @@ class BubbleSort(Sorter):
         self.frames = [bar_rects]
         while not self.is_sorted:
             self.sort_step(ax2=ax, animation=True)
-            im = ax.bar(range(len(self.items)), self.items, align="edge")
-            im[self.states[-1][1]].set_color('orange')  # Highlight swapped bar 1
-            im[self.states[-1][2]].set_color('orange')  # Highlight swapped bar 2
-            self.frames.append(im)
 
         # Create the animation
-        return animation.ArtistAnimation(fig, self.frames, repeat=False, interval=200)
-
+        ani = animation.ArtistAnimation(fig, self.frames, repeat=False, interval=200)
+        return ani
