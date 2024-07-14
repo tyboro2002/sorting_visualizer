@@ -2,6 +2,8 @@ import random
 
 from matplotlib import pyplot as plt
 
+default_swap_count_almost_sorted = 2
+
 
 class ItemContainer:
     def __init__(self, items=None, length=None):
@@ -25,8 +27,30 @@ class ItemContainer:
         random.shuffle(self.items)
         return self
 
+    def almost_sorted(self, swap_count=default_swap_count_almost_sorted):
+        self.items.sort()
+        length = len(self.items)
+        for _ in range(swap_count):
+            i, j = random.sample(range(length), 2)
+            self.swap(i, j)
+        return self
+
+    def v_shaped(self):
+        self.items = sorted(self.items)
+        half_length = self.length // 2
+        self.items = self.items[:half_length][::-1] + self.items[half_length:]
+        return self
+
+    def a_shaped(self):
+        self.items = sorted(self.items)
+        half_length = self.length // 2
+        self.items = self.items[half_length:] + self.items[:half_length][::-1]
+        return self
+
     def reverse(self):
-        self.items = self.items[::-1]
+        # self.items = self.items[::-1]
+        # return self
+        self.items = sorted(self.items, reverse=True)
         return self
 
     def __len__(self):

@@ -5,6 +5,19 @@ from sorter import Sorter
 
 
 class BubbleSort(Sorter):
+    """
+    sort the data using bubble sort
+
+    1. Start at the beginning of the array.
+    2. Compare each pair of adjacent elements:
+        a. If the elements are in the wrong order (i.e., the first is greater than the second), swap them.
+    3. Move to the next pair of elements.
+    4. Repeat steps 2 and 3 for the entire array:
+        a. After each complete pass through the array, the largest element is moved to its correct position.
+        b. The process is repeated for the rest of the array, excluding the last sorted elements.
+    5. Continue until no swaps are needed: This indicates that the array is sorted.
+    """
+
     def __init__(self, itemContainer: ItemContainer, shuffle_method):
         super().__init__(itemContainer, shuffle_method)
         self.states = []

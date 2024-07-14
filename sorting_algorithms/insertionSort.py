@@ -5,6 +5,19 @@ from sorter import Sorter
 
 
 class InsertionSort(Sorter):
+    """
+    sort the data using insertion sort
+
+    1. Initialize: Consider the first element as sorted.
+    2. Iterate: Start from the second element (index 1) to the last element.
+    3. Pick: Take the current element (let's call it the key).
+    4. Compare and Shift:
+        a. Compare the key with elements in the sorted portion.
+        b. Shift elements of the sorted portion that are greater than the key to one position to the right.
+    5. Insert: Place the key in its correct position.
+    6. Repeat: Continue the process for all elements.
+    """
+
     def __init__(self, itemContainer: ItemContainer, shuffle_method):
         super().__init__(itemContainer, shuffle_method)
         self.states = []
