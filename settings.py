@@ -12,7 +12,9 @@ size = 10
 buble_sort = False
 insertion_sort = False
 radix_sort = False
-gnome_sort = True
+gnome_sort = False
+cocktail_shaker_sort = False
+shell_sort = True
 
 # what shuffling algorithms are used
 shufflers = [

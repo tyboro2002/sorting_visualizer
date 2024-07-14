@@ -1,19 +1,18 @@
 from itemContainer import ItemContainer
 from settings import sorted_dir, add_maze_size_to_name, animate, animations_dir, sort_filetype, animations_filetype, \
-    size, buble_sort, radix_sort, insertion_sort, shufflers, gnome_sort
+    size, buble_sort, radix_sort, insertion_sort, shufflers, gnome_sort, cocktail_shaker_sort, shell_sort
 from sorting_algorithms.bubleSort import BubbleSort
+from sorting_algorithms.cocktailShakerSort import CocktailShakerSort
 from sorting_algorithms.gnomeSort import GnomeSort
 from sorting_algorithms.insertionSort import InsertionSort
 from sorting_algorithms.radixSorter import RadixSort
+from sorting_algorithms.shellSort import ShellSort
 
 # TODO Selection Sort
 # TODO Merge Sort
 # TODO Quick Sort
 # TODO Heap Sort
 # TODO Counting Sort
-# TODO Shell Sort
-# TODO Cocktail Shaker Sort
-# TODO Gnome Sort
 
 if __name__ == "__main__":
     item_container = ItemContainer(length=size)
@@ -74,3 +73,31 @@ if __name__ == "__main__":
                 (f"_{len(item_container)}" if add_maze_size_to_name else "") + animations_filetype
             )
             print("done gnome sort for " + shuffler.__name__)
+
+        if cocktail_shaker_sort:
+            print("starting cocktail shaker sort for " + shuffler.__name__)
+            CocktailShakerSort(
+                item_container,
+                shuffler
+            ).run(
+                sorted_filename=sorted_dir + "CocktailShakerSort/CocktailShakerSort_" + shuffler.__name__ +
+                (f"_{len(item_container)}" if add_maze_size_to_name else "") + sort_filetype,
+                animate=animate,
+                animation_filename=animations_dir + 'CocktailShakerSort/CocktailShakerSort_' + shuffler.__name__ + "_animation" +
+                (f"_{len(item_container)}" if add_maze_size_to_name else "") + animations_filetype
+            )
+            print("done cocktail shaker sort for " + shuffler.__name__)
+
+        if shell_sort:
+            print("starting shell sort for " + shuffler.__name__)
+            ShellSort(
+                item_container,
+                shuffler
+            ).run(
+                sorted_filename=sorted_dir + "ShellSort/ShellSort_" + shuffler.__name__ +
+                (f"_{len(item_container)}" if add_maze_size_to_name else "") + sort_filetype,
+                animate=animate,
+                animation_filename=animations_dir + 'ShellSort/ShellSort_' + shuffler.__name__ + "_animation" +
+                (f"_{len(item_container)}" if add_maze_size_to_name else "") + animations_filetype
+            )
+            print("done shell sort for " + shuffler.__name__)
