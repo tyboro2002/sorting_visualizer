@@ -9,15 +9,18 @@ add_maze_size_to_name = False
 size = 10
 
 # what sorting simulations do we run
-buble_sort = False
-insertion_sort = False
-radix_sort = False
-gnome_sort = False
-cocktail_shaker_sort = False
-shell_sort = False
-selection_sort = False
-heap_sort_min = True
-heap_sort_max = True
+running = True
+buble_sort = running
+insertion_sort = running
+radix_sort = running
+gnome_sort = running
+cocktail_shaker_sort = running
+shell_sort = running
+selection_sort = running
+heap_sort_min = running
+heap_sort_max = running
+quick_sort = True
+merge_sort = True
 
 # what shuffling algorithms are used
 shufflers = [

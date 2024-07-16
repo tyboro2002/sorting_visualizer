@@ -1,5 +1,3 @@
-from matplotlib import pyplot as plt, animation
-
 from itemContainer import ItemContainer
 from sorter import Sorter
 
@@ -24,7 +22,6 @@ class ShellSort(Sorter):
 
     def __init__(self, itemContainer: ItemContainer, shuffle_method):
         super().__init__(itemContainer, shuffle_method)
-        self.frames = []
 
     def sort_step(self, ax2=None, animation=False):
         n = len(self.items)
@@ -46,29 +43,3 @@ class ShellSort(Sorter):
 
     def sort(self):
         self.sort_step()
-
-    def add_image(self, ax, highlight=None):
-        ax.set_xticks([]), ax.set_yticks([])
-        ax.axis('off')  # Remove axes
-        im2 = ax.bar(range(len(self.items)), self.items, align="edge", color='skyblue')
-        if highlight:
-            for e in highlight:
-                im2[e].set_color('orange')  # Highlight swapped bars
-        self.frames.append(im2)
-
-    def animate(self):
-        fig, ax = plt.subplots(figsize=(max(len(self.items) / 5, 10), max(len(self.items) / 5, 10)))
-        ax.set_xticks([]), ax.set_yticks([])
-        ax.axis('off')  # Remove axes
-
-        # Initial bar plot
-        bar_rects = ax.bar(range(len(self.items)), self.items, align="edge", color='skyblue')
-
-        # Generate frames for animation
-        self.frames = [bar_rects]
-        self.sort_step(ax2=ax, animation=True)
-
-        # Create the animation
-        ani = animation.ArtistAnimation(fig, self.frames, repeat=False, interval=200)
-        plt.show()
-        return ani

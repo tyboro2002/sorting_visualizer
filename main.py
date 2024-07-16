@@ -1,12 +1,14 @@
 from itemContainer import ItemContainer
 from settings import sorted_dir, add_maze_size_to_name, animate, animations_dir, sort_filetype, animations_filetype, \
     size, buble_sort, radix_sort, insertion_sort, shufflers, gnome_sort, cocktail_shaker_sort, shell_sort, \
-    selection_sort, heap_sort_max, heap_sort_min
+    selection_sort, heap_sort_max, heap_sort_min, quick_sort, merge_sort
 from sorting_algorithms.bubleSort import BubbleSort
 from sorting_algorithms.cocktailShakerSort import CocktailShakerSort
 from sorting_algorithms.gnomeSort import GnomeSort
 from sorting_algorithms.heapSort import HeapSort
 from sorting_algorithms.insertionSort import InsertionSort
+from sorting_algorithms.mergeSort import MergeSort
+from sorting_algorithms.quickSort import QuickSort
 from sorting_algorithms.radixSorter import RadixSort
 from sorting_algorithms.selectionSort import SelectionSort
 from sorting_algorithms.shellSort import ShellSort
@@ -58,9 +60,7 @@ from sorting_algorithms.shellSort import ShellSort
 # TODO Quad Sort
 
 # Fast Algorithms
-# TODO Merge Sort
-# TODO Quick Sort
-# TODO Heap Sort (max or min) (in the making)
+# TODO Merge Sort (in the workings)
 # TODO Counting Sort
 # TODO Bucket Sort
 # TODO Tournament Sort
@@ -211,3 +211,31 @@ if __name__ == "__main__":
                 (f"_{len(item_container)}" if add_maze_size_to_name else "") + animations_filetype
             )
             print("done heap sort max for " + shuffler.__name__)
+
+        if quick_sort:
+            print("starting quick sort for " + shuffler.__name__)
+            QuickSort(
+                item_container,
+                shuffler
+            ).run(
+                sorted_filename=sorted_dir + "QuickSort/QuickSort_" + shuffler.__name__ +
+                (f"_{len(item_container)}" if add_maze_size_to_name else "") + sort_filetype,
+                animate=animate,
+                animation_filename=animations_dir + 'QuickSort/QuickSort_' + shuffler.__name__ + "_animation" +
+                (f"_{len(item_container)}" if add_maze_size_to_name else "") + animations_filetype
+            )
+            print("done quick sort for " + shuffler.__name__)
+
+        if merge_sort:
+            print("starting merge sort for " + shuffler.__name__)
+            MergeSort(
+                item_container,
+                shuffler
+            ).run(
+                sorted_filename=sorted_dir + "MergeSort/MergeSort_" + shuffler.__name__ +
+                (f"_{len(item_container)}" if add_maze_size_to_name else "") + sort_filetype,
+                animate=animate,
+                animation_filename=animations_dir + 'MergeSort/MergeSort_' + shuffler.__name__ + "_animation" +
+                (f"_{len(item_container)}" if add_maze_size_to_name else "") + animations_filetype
+            )
+            print("done merge sort for " + shuffler.__name__)
