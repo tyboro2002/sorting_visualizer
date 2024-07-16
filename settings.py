@@ -14,7 +14,10 @@ insertion_sort = False
 radix_sort = False
 gnome_sort = False
 cocktail_shaker_sort = False
-shell_sort = True
+shell_sort = False
+selection_sort = False
+heap_sort_min = True
+heap_sort_max = True
 
 # what shuffling algorithms are used
 shufflers = [

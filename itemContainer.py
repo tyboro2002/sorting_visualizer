@@ -2,7 +2,7 @@ import random
 
 from matplotlib import pyplot as plt
 
-default_swap_count_almost_sorted = 2
+default_swap_count_almost_sorted = 1
 
 
 class ItemContainer:
