@@ -1,4 +1,3 @@
-from matplotlib import pyplot as plt, animation
 from itemContainer import ItemContainer
 from sorter import Sorter
 

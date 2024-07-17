@@ -1,10 +1,12 @@
 from itemContainer import ItemContainer
 from settings import sorted_dir, add_maze_size_to_name, animate, animations_dir, sort_filetype, animations_filetype, \
     size, buble_sort, radix_sort, insertion_sort, shufflers, gnome_sort, cocktail_shaker_sort, shell_sort, \
-    selection_sort, heap_sort_max, heap_sort_min, quick_sort, merge_sort
+    selection_sort, heap_sort_max, heap_sort_min, quick_sort, merge_sort, gravity_sort, comb_sort
 from sorting_algorithms.bubleSort import BubbleSort
 from sorting_algorithms.cocktailShakerSort import CocktailShakerSort
+from sorting_algorithms.combSort import CombSort
 from sorting_algorithms.gnomeSort import GnomeSort
+from sorting_algorithms.gravitySort import GravitySort
 from sorting_algorithms.heapSort import HeapSort
 from sorting_algorithms.insertionSort import InsertionSort
 from sorting_algorithms.mergeSort import MergeSort
@@ -16,7 +18,6 @@ from sorting_algorithms.shellSort import ShellSort
 # Variations of algorithms
 # TODO (double) Selection Sort
 # TODO Binary Insertion Sort
-# TODO Comb Sort (sort of insertion sort but check with a gap between and decrease that gap)
 # TODO Weak Heap Sort
 # TODO Ternary Heap Sort
 # TODO Binary Quick Short
@@ -26,7 +27,6 @@ from sorting_algorithms.shellSort import ShellSort
 # TODO Proxmap Sort
 
 # Normal Algorithms
-# TODO Gravity Sort
 # TODO Pancake Sort
 # TODO Cycle Sort
 # TODO Exchange Sort (looking forward or looking backward)
@@ -149,7 +149,8 @@ if __name__ == "__main__":
                 sorted_filename=sorted_dir + "CocktailShakerSort/CocktailShakerSort_" + shuffler.__name__ +
                 (f"_{len(item_container)}" if add_maze_size_to_name else "") + sort_filetype,
                 animate=animate,
-                animation_filename=animations_dir + 'CocktailShakerSort/CocktailShakerSort_' + shuffler.__name__ + "_animation" +
+                animation_filename=animations_dir + 'CocktailShakerSort/CocktailShakerSort_' + shuffler.__name__ +
+                "_animation" +
                 (f"_{len(item_container)}" if add_maze_size_to_name else "") + animations_filetype
             )
             print("done cocktail shaker sort for " + shuffler.__name__)
@@ -239,3 +240,31 @@ if __name__ == "__main__":
                 (f"_{len(item_container)}" if add_maze_size_to_name else "") + animations_filetype
             )
             print("done merge sort for " + shuffler.__name__)
+
+        if gravity_sort:
+            print("starting gravity sort for " + shuffler.__name__)
+            GravitySort(
+                item_container,
+                shuffler
+            ).run(
+                sorted_filename=sorted_dir + "GravitySort/GravitySort_" + shuffler.__name__ +
+                (f"_{len(item_container)}" if add_maze_size_to_name else "") + sort_filetype,
+                animate=animate,
+                animation_filename=animations_dir + 'GravitySort/GravitySort_' + shuffler.__name__ + "_animation" +
+                (f"_{len(item_container)}" if add_maze_size_to_name else "") + animations_filetype
+            )
+            print("done gravity sort for " + shuffler.__name__)
+
+        if comb_sort:
+            print("starting comb sort for " + shuffler.__name__)
+            CombSort(
+                item_container,
+                shuffler
+            ).run(
+                sorted_filename=sorted_dir + "CombSort/CombSort_" + shuffler.__name__ +
+                (f"_{len(item_container)}" if add_maze_size_to_name else "") + sort_filetype,
+                animate=animate,
+                animation_filename=animations_dir + 'CombSort/CombSort_' + shuffler.__name__ + "_animation" +
+                (f"_{len(item_container)}" if add_maze_size_to_name else "") + animations_filetype
+            )
+            print("done comb sort for " + shuffler.__name__)

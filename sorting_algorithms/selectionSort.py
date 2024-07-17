@@ -1,5 +1,3 @@
-from matplotlib import pyplot as plt, animation
-
 from itemContainer import ItemContainer
 from sorter import Sorter
 
@@ -39,7 +37,8 @@ class SelectionSort(Sorter):
                     min_index = j
 
             if min_index != self.current_index:
-                self.items[self.current_index], self.items[min_index] = self.items[min_index], self.items[self.current_index]
+                self.items[self.current_index], self.items[min_index] = (
+                    self.items[min_index], self.items[self.current_index])
                 self.states.append((self.items[:], self.current_index, min_index))
                 if animation:
                     self.add_image(ax2, highlight=(self.current_index, min_index))

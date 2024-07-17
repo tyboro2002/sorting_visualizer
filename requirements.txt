@@ -1,1 +1,2 @@
-matplotlib
+matplotlib~=3.9.1
+moviepy~=1.0.3

@@ -1,11 +1,11 @@
 from moviepy.editor import VideoFileClip, ImageClip, CompositeVideoClip, concatenate_videoclips
-from moviepy.video.VideoClip import ColorClip, TextClip
+from moviepy.video.VideoClip import ColorClip
 
 
 # Function to freeze the last frame of a video clip
 def freeze_last_frame(clip, new_duration):
     # Load the PNG image (to be displayed above the winning video)
-    overlay_image = ImageClip("assets/winner.png")  # Resize to match video width
+    # overlay_image = ImageClip("assets/winner.png")  # Resize to match video width
     last_frame = clip.to_ImageClip(t=clip.duration-0.1)
     frozen_clip = concatenate_videoclips([clip, last_frame.set_duration(new_duration)])
     return frozen_clip
