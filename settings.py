@@ -22,7 +22,9 @@ heap_sort_max = running
 quick_sort = running
 merge_sort = running
 gravity_sort = running
-comb_sort = True
+comb_sort = running
+weak_heap_sort_min = True
+weak_heap_sort_max = True
 
 # what shuffling algorithms are used
 shufflers = [

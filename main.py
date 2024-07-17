@@ -1,7 +1,8 @@
 from itemContainer import ItemContainer
 from settings import sorted_dir, add_maze_size_to_name, animate, animations_dir, sort_filetype, animations_filetype, \
     size, buble_sort, radix_sort, insertion_sort, shufflers, gnome_sort, cocktail_shaker_sort, shell_sort, \
-    selection_sort, heap_sort_max, heap_sort_min, quick_sort, merge_sort, gravity_sort, comb_sort
+    selection_sort, heap_sort_max, heap_sort_min, quick_sort, merge_sort, gravity_sort, comb_sort, \
+    weak_heap_sort_min, weak_heap_sort_max
 from sorting_algorithms.bubleSort import BubbleSort
 from sorting_algorithms.cocktailShakerSort import CocktailShakerSort
 from sorting_algorithms.combSort import CombSort
@@ -14,13 +15,13 @@ from sorting_algorithms.quickSort import QuickSort
 from sorting_algorithms.radixSorter import RadixSort
 from sorting_algorithms.selectionSort import SelectionSort
 from sorting_algorithms.shellSort import ShellSort
+from sorting_algorithms.weakHeapSort import WeakHeapSort
 
 # Variations of algorithms
 # TODO (double) Selection Sort
 # TODO Binary Insertion Sort
-# TODO Weak Heap Sort
 # TODO Ternary Heap Sort
-# TODO Binary Quick Short
+# TODO Binary Quick Sort
 # TODO American Flag Sort
 # TODO Spread Sort
 # TODO Sample Sort
@@ -268,3 +269,33 @@ if __name__ == "__main__":
                 (f"_{len(item_container)}" if add_maze_size_to_name else "") + animations_filetype
             )
             print("done comb sort for " + shuffler.__name__)
+
+        if weak_heap_sort_min:
+            print("starting weak heap min sort for " + shuffler.__name__)
+            WeakHeapSort(
+                item_container,
+                shuffler,
+                min_heap=True
+            ).run(
+                sorted_filename=sorted_dir + "WeakHeapSort_min/WeakHeapSort_min_" + shuffler.__name__ +
+                (f"_{len(item_container)}" if add_maze_size_to_name else "") + sort_filetype,
+                animate=animate,
+                animation_filename=animations_dir + 'WeakHeapSort_min/WeakHeapSort_min_' + shuffler.__name__ + "_animation" +
+                (f"_{len(item_container)}" if add_maze_size_to_name else "") + animations_filetype
+            )
+            print("done weak heap sort min for " + shuffler.__name__)
+
+        if weak_heap_sort_max:
+            print("starting weak heap max sort for " + shuffler.__name__)
+            WeakHeapSort(
+                item_container,
+                shuffler,
+                min_heap=False
+            ).run(
+                sorted_filename=sorted_dir + "WeakHeapSort_max/WeakHeapSort_max_" + shuffler.__name__ +
+                (f"_{len(item_container)}" if add_maze_size_to_name else "") + sort_filetype,
+                animate=animate,
+                animation_filename=animations_dir + 'WeakHeapSort_max/WeakHeapSort_max_' + shuffler.__name__ + "_animation" +
+                (f"_{len(item_container)}" if add_maze_size_to_name else "") + animations_filetype
+            )
+            print("done weak heap sort max for " + shuffler.__name__)
