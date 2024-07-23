@@ -1,8 +1,9 @@
 from itemContainer import ItemContainer
-from settings import sorted_dir, add_maze_size_to_name, animate, animations_dir, sort_filetype, animations_filetype, \
+from settings import sorted_dir, add_sorting_size_to_name, animate, animations_dir, sort_filetype, animations_filetype, \
     size, buble_sort, radix_sort, insertion_sort, shufflers, gnome_sort, cocktail_shaker_sort, shell_sort, \
     selection_sort, heap_sort_max, heap_sort_min, quick_sort, merge_sort, gravity_sort, comb_sort, \
-    weak_heap_sort_min, weak_heap_sort_max
+    weak_heap_sort_min, weak_heap_sort_max, binary_quick_sort
+from sorting_algorithms.binaryQuickSort import BinaryQuickSort
 from sorting_algorithms.bubleSort import BubbleSort
 from sorting_algorithms.cocktailShakerSort import CocktailShakerSort
 from sorting_algorithms.combSort import CombSort
@@ -21,7 +22,6 @@ from sorting_algorithms.weakHeapSort import WeakHeapSort
 # TODO (double) Selection Sort
 # TODO Binary Insertion Sort
 # TODO Ternary Heap Sort
-# TODO Binary Quick Sort
 # TODO American Flag Sort
 # TODO Spread Sort
 # TODO Sample Sort
@@ -92,10 +92,10 @@ if __name__ == "__main__":
                 shuffler
             ).run(
                 sorted_filename=sorted_dir + "BubleSort/BubleSort_" + shuffler.__name__ +
-                (f"_{len(item_container)}" if add_maze_size_to_name else "") + sort_filetype,
+                (f"_{len(item_container)}" if add_sorting_size_to_name else "") + sort_filetype,
                 animate=animate,
                 animation_filename=animations_dir + 'BubleSort/BubleSort_' + shuffler.__name__ + "_animation" +
-                (f"_{len(item_container)}" if add_maze_size_to_name else "") + animations_filetype
+                (f"_{len(item_container)}" if add_sorting_size_to_name else "") + animations_filetype
             )
             print("done bubble sort for " + shuffler.__name__)
 
@@ -106,10 +106,10 @@ if __name__ == "__main__":
                 shuffler
             ).run(
                 sorted_filename=sorted_dir + "InsertionSort/InsertionSort_" + shuffler.__name__ +
-                (f"_{len(item_container)}" if add_maze_size_to_name else "") + sort_filetype,
+                (f"_{len(item_container)}" if add_sorting_size_to_name else "") + sort_filetype,
                 animate=animate,
                 animation_filename=animations_dir + 'InsertionSort/InsertionSort_' + shuffler.__name__ + "_animation" +
-                (f"_{len(item_container)}" if add_maze_size_to_name else "") + animations_filetype
+                (f"_{len(item_container)}" if add_sorting_size_to_name else "") + animations_filetype
             )
             print("done insertion sort for " + shuffler.__name__)
 
@@ -120,10 +120,10 @@ if __name__ == "__main__":
                 shuffler
             ).run(
                 sorted_filename=sorted_dir + "RadixSort/RadixSort_" + shuffler.__name__ +
-                (f"_{len(item_container)}" if add_maze_size_to_name else "") + sort_filetype,
+                (f"_{len(item_container)}" if add_sorting_size_to_name else "") + sort_filetype,
                 animate=animate,
                 animation_filename=animations_dir + 'RadixSort/RadixSort_' + shuffler.__name__ + "_animation" +
-                (f"_{len(item_container)}" if add_maze_size_to_name else "") + animations_filetype
+                (f"_{len(item_container)}" if add_sorting_size_to_name else "") + animations_filetype
             )
             print("done radix sort for " + shuffler.__name__)
 
@@ -134,10 +134,10 @@ if __name__ == "__main__":
                 shuffler
             ).run(
                 sorted_filename=sorted_dir + "GnomeSort/GnomeSort_" + shuffler.__name__ +
-                (f"_{len(item_container)}" if add_maze_size_to_name else "") + sort_filetype,
+                (f"_{len(item_container)}" if add_sorting_size_to_name else "") + sort_filetype,
                 animate=animate,
                 animation_filename=animations_dir + 'GnomeSort/GnomeSort_' + shuffler.__name__ + "_animation" +
-                (f"_{len(item_container)}" if add_maze_size_to_name else "") + animations_filetype
+                (f"_{len(item_container)}" if add_sorting_size_to_name else "") + animations_filetype
             )
             print("done gnome sort for " + shuffler.__name__)
 
@@ -148,11 +148,11 @@ if __name__ == "__main__":
                 shuffler
             ).run(
                 sorted_filename=sorted_dir + "CocktailShakerSort/CocktailShakerSort_" + shuffler.__name__ +
-                (f"_{len(item_container)}" if add_maze_size_to_name else "") + sort_filetype,
+                (f"_{len(item_container)}" if add_sorting_size_to_name else "") + sort_filetype,
                 animate=animate,
                 animation_filename=animations_dir + 'CocktailShakerSort/CocktailShakerSort_' + shuffler.__name__ +
                 "_animation" +
-                (f"_{len(item_container)}" if add_maze_size_to_name else "") + animations_filetype
+                (f"_{len(item_container)}" if add_sorting_size_to_name else "") + animations_filetype
             )
             print("done cocktail shaker sort for " + shuffler.__name__)
 
@@ -163,10 +163,10 @@ if __name__ == "__main__":
                 shuffler
             ).run(
                 sorted_filename=sorted_dir + "ShellSort/ShellSort_" + shuffler.__name__ +
-                (f"_{len(item_container)}" if add_maze_size_to_name else "") + sort_filetype,
+                (f"_{len(item_container)}" if add_sorting_size_to_name else "") + sort_filetype,
                 animate=animate,
                 animation_filename=animations_dir + 'ShellSort/ShellSort_' + shuffler.__name__ + "_animation" +
-                (f"_{len(item_container)}" if add_maze_size_to_name else "") + animations_filetype
+                (f"_{len(item_container)}" if add_sorting_size_to_name else "") + animations_filetype
             )
             print("done shell sort for " + shuffler.__name__)
 
@@ -177,10 +177,10 @@ if __name__ == "__main__":
                 shuffler
             ).run(
                 sorted_filename=sorted_dir + "SelectionSort/SelectionSort_" + shuffler.__name__ +
-                (f"_{len(item_container)}" if add_maze_size_to_name else "") + sort_filetype,
+                (f"_{len(item_container)}" if add_sorting_size_to_name else "") + sort_filetype,
                 animate=animate,
                 animation_filename=animations_dir + 'SelectionSort/SelectionSort_' + shuffler.__name__ + "_animation" +
-                (f"_{len(item_container)}" if add_maze_size_to_name else "") + animations_filetype
+                (f"_{len(item_container)}" if add_sorting_size_to_name else "") + animations_filetype
             )
             print("done selection sort for " + shuffler.__name__)
 
@@ -192,10 +192,10 @@ if __name__ == "__main__":
                 min_heap=True
             ).run(
                 sorted_filename=sorted_dir + "HeapSort_min/HeapSort_min_" + shuffler.__name__ +
-                (f"_{len(item_container)}" if add_maze_size_to_name else "") + sort_filetype,
+                (f"_{len(item_container)}" if add_sorting_size_to_name else "") + sort_filetype,
                 animate=animate,
                 animation_filename=animations_dir + 'HeapSort_min/HeapSort_min_' + shuffler.__name__ + "_animation" +
-                (f"_{len(item_container)}" if add_maze_size_to_name else "") + animations_filetype
+                (f"_{len(item_container)}" if add_sorting_size_to_name else "") + animations_filetype
             )
             print("done heap sort min for " + shuffler.__name__)
 
@@ -207,10 +207,10 @@ if __name__ == "__main__":
                 min_heap=False
             ).run(
                 sorted_filename=sorted_dir + "HeapSort_max/HeapSort_max_" + shuffler.__name__ +
-                (f"_{len(item_container)}" if add_maze_size_to_name else "") + sort_filetype,
+                (f"_{len(item_container)}" if add_sorting_size_to_name else "") + sort_filetype,
                 animate=animate,
                 animation_filename=animations_dir + 'HeapSort_max/HeapSort_max_' + shuffler.__name__ + "_animation" +
-                (f"_{len(item_container)}" if add_maze_size_to_name else "") + animations_filetype
+                (f"_{len(item_container)}" if add_sorting_size_to_name else "") + animations_filetype
             )
             print("done heap sort max for " + shuffler.__name__)
 
@@ -221,10 +221,10 @@ if __name__ == "__main__":
                 shuffler
             ).run(
                 sorted_filename=sorted_dir + "QuickSort/QuickSort_" + shuffler.__name__ +
-                (f"_{len(item_container)}" if add_maze_size_to_name else "") + sort_filetype,
+                (f"_{len(item_container)}" if add_sorting_size_to_name else "") + sort_filetype,
                 animate=animate,
                 animation_filename=animations_dir + 'QuickSort/QuickSort_' + shuffler.__name__ + "_animation" +
-                (f"_{len(item_container)}" if add_maze_size_to_name else "") + animations_filetype
+                (f"_{len(item_container)}" if add_sorting_size_to_name else "") + animations_filetype
             )
             print("done quick sort for " + shuffler.__name__)
 
@@ -235,10 +235,10 @@ if __name__ == "__main__":
                 shuffler
             ).run(
                 sorted_filename=sorted_dir + "MergeSort/MergeSort_" + shuffler.__name__ +
-                (f"_{len(item_container)}" if add_maze_size_to_name else "") + sort_filetype,
+                (f"_{len(item_container)}" if add_sorting_size_to_name else "") + sort_filetype,
                 animate=animate,
                 animation_filename=animations_dir + 'MergeSort/MergeSort_' + shuffler.__name__ + "_animation" +
-                (f"_{len(item_container)}" if add_maze_size_to_name else "") + animations_filetype
+                (f"_{len(item_container)}" if add_sorting_size_to_name else "") + animations_filetype
             )
             print("done merge sort for " + shuffler.__name__)
 
@@ -249,10 +249,10 @@ if __name__ == "__main__":
                 shuffler
             ).run(
                 sorted_filename=sorted_dir + "GravitySort/GravitySort_" + shuffler.__name__ +
-                (f"_{len(item_container)}" if add_maze_size_to_name else "") + sort_filetype,
+                (f"_{len(item_container)}" if add_sorting_size_to_name else "") + sort_filetype,
                 animate=animate,
                 animation_filename=animations_dir + 'GravitySort/GravitySort_' + shuffler.__name__ + "_animation" +
-                (f"_{len(item_container)}" if add_maze_size_to_name else "") + animations_filetype
+                (f"_{len(item_container)}" if add_sorting_size_to_name else "") + animations_filetype
             )
             print("done gravity sort for " + shuffler.__name__)
 
@@ -263,10 +263,10 @@ if __name__ == "__main__":
                 shuffler
             ).run(
                 sorted_filename=sorted_dir + "CombSort/CombSort_" + shuffler.__name__ +
-                (f"_{len(item_container)}" if add_maze_size_to_name else "") + sort_filetype,
+                (f"_{len(item_container)}" if add_sorting_size_to_name else "") + sort_filetype,
                 animate=animate,
                 animation_filename=animations_dir + 'CombSort/CombSort_' + shuffler.__name__ + "_animation" +
-                (f"_{len(item_container)}" if add_maze_size_to_name else "") + animations_filetype
+                (f"_{len(item_container)}" if add_sorting_size_to_name else "") + animations_filetype
             )
             print("done comb sort for " + shuffler.__name__)
 
@@ -278,10 +278,11 @@ if __name__ == "__main__":
                 min_heap=True
             ).run(
                 sorted_filename=sorted_dir + "WeakHeapSort_min/WeakHeapSort_min_" + shuffler.__name__ +
-                (f"_{len(item_container)}" if add_maze_size_to_name else "") + sort_filetype,
+                (f"_{len(item_container)}" if add_sorting_size_to_name else "") + sort_filetype,
                 animate=animate,
-                animation_filename=animations_dir + 'WeakHeapSort_min/WeakHeapSort_min_' + shuffler.__name__ + "_animation" +
-                (f"_{len(item_container)}" if add_maze_size_to_name else "") + animations_filetype
+                animation_filename=animations_dir + 'WeakHeapSort_min/WeakHeapSort_min_' + shuffler.__name__
+                + "_animation" +
+                (f"_{len(item_container)}" if add_sorting_size_to_name else "") + animations_filetype
             )
             print("done weak heap sort min for " + shuffler.__name__)
 
@@ -293,9 +294,25 @@ if __name__ == "__main__":
                 min_heap=False
             ).run(
                 sorted_filename=sorted_dir + "WeakHeapSort_max/WeakHeapSort_max_" + shuffler.__name__ +
-                (f"_{len(item_container)}" if add_maze_size_to_name else "") + sort_filetype,
+                (f"_{len(item_container)}" if add_sorting_size_to_name else "") + sort_filetype,
                 animate=animate,
-                animation_filename=animations_dir + 'WeakHeapSort_max/WeakHeapSort_max_' + shuffler.__name__ + "_animation" +
-                (f"_{len(item_container)}" if add_maze_size_to_name else "") + animations_filetype
+                animation_filename=animations_dir + 'WeakHeapSort_max/WeakHeapSort_max_' + shuffler.__name__
+                + "_animation" +
+                (f"_{len(item_container)}" if add_sorting_size_to_name else "") + animations_filetype
             )
             print("done weak heap sort max for " + shuffler.__name__)
+
+        if binary_quick_sort:
+            print("starting binary quick sort for " + shuffler.__name__)
+            BinaryQuickSort(
+                item_container,
+                shuffler,
+            ).run(
+                sorted_filename=sorted_dir + "BinaryQuickSort/BinaryQuickSort_" + shuffler.__name__ +
+                (f"_{len(item_container)}" if add_sorting_size_to_name else "") + sort_filetype,
+                animate=animate,
+                animation_filename=animations_dir + 'BinaryQuickSort/BinaryQuickSort_' + shuffler.__name__
+                + "_animation" +
+                (f"_{len(item_container)}" if add_sorting_size_to_name else "") + animations_filetype
+            )
+            print("done binary quick sort max for " + shuffler.__name__)

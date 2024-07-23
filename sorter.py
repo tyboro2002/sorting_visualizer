@@ -1,6 +1,7 @@
 from matplotlib import animation, pyplot as plt
 
 from itemContainer import ItemContainer
+from settings import FPS
 
 
 class Sorter:
@@ -71,5 +72,5 @@ class Sorter:
             print("generating animation")
             ani = self.animate()
             print("saving animation")
-            ani.save(animation_filename, writer='ffmpeg')
+            ani.save(animation_filename, writer='ffmpeg', fps=FPS)
             self.itemContainer.save(sorted_filename)
