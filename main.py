@@ -62,7 +62,6 @@ from sorting_algorithms.weakHeapSort import WeakHeapSort
 # TODO Quad Sort
 
 # Fast Algorithms
-# TODO Merge Sort (in the workings)
 # TODO Counting Sort
 # TODO Bucket Sort
 # TODO Tournament Sort
