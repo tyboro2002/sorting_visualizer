@@ -31,7 +31,8 @@ binary_quick_sort = running2
 pancake_sort = running
 cycle_sort = running
 circle_sort = running
-odd_even_sort = True
+odd_even_sort = running
+patience_sort = True
 
 # what shuffling algorithms are used
 shufflers = [
