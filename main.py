@@ -2,11 +2,12 @@ from itemContainer import ItemContainer
 from settings import sorted_dir, add_sorting_size_to_name, animate, animations_dir, sort_filetype, animations_filetype, \
     size, buble_sort, radix_sort, insertion_sort, shufflers, gnome_sort, cocktail_shaker_sort, shell_sort, \
     selection_sort, heap_sort_max, heap_sort_min, quick_sort, merge_sort, gravity_sort, comb_sort, \
-    weak_heap_sort_min, weak_heap_sort_max, binary_quick_sort, pancake_sort
+    weak_heap_sort_min, weak_heap_sort_max, binary_quick_sort, pancake_sort, cycle_sort
 from sorting_algorithms.binaryQuickSort import BinaryQuickSort
 from sorting_algorithms.bubleSort import BubbleSort
 from sorting_algorithms.cocktailShakerSort import CocktailShakerSort
 from sorting_algorithms.combSort import CombSort
+from sorting_algorithms.cycleSort import CycleSort
 from sorting_algorithms.gnomeSort import GnomeSort
 from sorting_algorithms.gravitySort import GravitySort
 from sorting_algorithms.heapSort import HeapSort
@@ -29,7 +30,6 @@ from sorting_algorithms.weakHeapSort import WeakHeapSort
 # TODO Proxmap Sort
 
 # Normal Algorithms
-# TODO Cycle Sort
 # TODO Exchange Sort (looking forward or looking backward)
 # TODO Odd Even Sort
 # TODO Circle Sort
@@ -315,7 +315,7 @@ if __name__ == "__main__":
                 + "_animation" +
                 (f"_{len(item_container)}" if add_sorting_size_to_name else "") + animations_filetype
             )
-            print("done binary quick sort max for " + shuffler.__name__)
+            print("done binary quick sort for " + shuffler.__name__)
 
         if pancake_sort:
             print("starting pancake sort for " + shuffler.__name__)
@@ -329,4 +329,18 @@ if __name__ == "__main__":
                 animation_filename=animations_dir + 'PancakeSort/PancakeSort_' + shuffler.__name__ + "_animation" +
                 (f"_{len(item_container)}" if add_sorting_size_to_name else "") + animations_filetype
             )
-            print("done pancake sort max for " + shuffler.__name__)
+            print("done pancake sort for " + shuffler.__name__)
+
+        if cycle_sort:
+            print("starting cycle sort for " + shuffler.__name__)
+            CycleSort(
+                item_container,
+                shuffler,
+            ).run(
+                sorted_filename=sorted_dir + "CycleSort/CycleSort_" + shuffler.__name__ +
+                (f"_{len(item_container)}" if add_sorting_size_to_name else "") + sort_filetype,
+                animate=animate,
+                animation_filename=animations_dir + 'CycleSort/CycleSort_' + shuffler.__name__ + "_animation" +
+                (f"_{len(item_container)}" if add_sorting_size_to_name else "") + animations_filetype
+            )
+            print("done cycle sort for " + shuffler.__name__)

@@ -28,7 +28,8 @@ comb_sort = running2
 weak_heap_sort_min = running
 weak_heap_sort_max = running
 binary_quick_sort = running2
-pancake_sort = True
+pancake_sort = running
+cycle_sort = True
 
 # what shuffling algorithms are used
 shufflers = [
