@@ -35,8 +35,7 @@ class CocktailShakerSort(Sorter):
             if self.items[i] > self.items[i + 1]:
                 self.items[i], self.items[i + 1] = self.items[i + 1], self.items[i]
                 swapped = True
-                if animation:
-                    self.add_image(ax2, highlight=(i, i+1))
+                self.add_image(ax2, highlight=(i, i+1), animation=animation)
 
         if not swapped:
             self.is_sorted = True
@@ -49,8 +48,7 @@ class CocktailShakerSort(Sorter):
             if self.items[i] < self.items[i - 1]:
                 self.items[i], self.items[i - 1] = self.items[i - 1], self.items[i]
                 swapped = True
-                if animation:
-                    self.add_image(ax2, highlight=(i, i-1))
+                self.add_image(ax2, highlight=(i, i-1), animation=animation)
 
         self.start += 1
 

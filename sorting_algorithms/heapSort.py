@@ -40,8 +40,7 @@ class HeapSort(Sorter):
 
         if largest != i:
             self.items[i], self.items[largest] = self.items[largest], self.items[i]
-            if animation:
-                self.add_image(ax2, highlight=(i, largest))
+            self.add_image(ax2, highlight=(i, largest), animation=animation)
             self.heapify(n, largest, ax2, animation)
 
     def sort_step(self, ax2=None, animation=False):
@@ -52,8 +51,7 @@ class HeapSort(Sorter):
 
         for i in range(n - 1, 0, -1):
             self.items[i], self.items[0] = self.items[0], self.items[i]
-            if animation:
-                self.add_image(ax2, highlight=(i, 0))
+            self.add_image(ax2, highlight=(i, 0), animation=animation)
             self.heapify(i, 0, ax2, animation)
 
     def sort(self):

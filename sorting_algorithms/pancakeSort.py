@@ -26,16 +26,15 @@ class PancakeSort(Sorter):
 
             if max_index != curr_size - 1:
                 # Move the maximum element to the beginning
-                if animation:
-                    self.add_image(ax2, highlight=(0, max_index), range_highlight=(0, curr_size - 1))
+                self.add_image(ax2, highlight=(0, max_index), range_highlight=(0, curr_size - 1), animation=animation)
                 self.flip(max_index)
-                if animation:
-                    self.add_image(ax2, highlight=(0, max_index), range_highlight=(0, curr_size - 1))
+                self.add_image(ax2, highlight=(0, max_index), range_highlight=(0, curr_size - 1), animation=animation)
 
                 # Move the maximum element to its correct position
                 self.flip(curr_size - 1)
-                if animation:
-                    self.add_image(ax2, highlight=(0, curr_size - 1), range_highlight=(0, curr_size - 1))
+                self.add_image(
+                    ax2, highlight=(0, curr_size - 1), range_highlight=(0, curr_size - 1), animation=animation
+                )
 
     def sort(self):
         self.pancake_sort()

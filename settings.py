@@ -30,7 +30,8 @@ weak_heap_sort_max = running
 binary_quick_sort = running2
 pancake_sort = running
 cycle_sort = running
-circle_sort = True
+circle_sort = running
+odd_even_sort = True
 
 # what shuffling algorithms are used
 shufflers = [

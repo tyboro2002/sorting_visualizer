@@ -31,8 +31,7 @@ class SelectionSort(Sorter):
         if self.current_index < len(self.items) - 1:
             min_index = self.current_index
             for j in range(self.current_index + 1, len(self.items)):
-                if animation:
-                    self.add_image(ax2, highlight=(j, min_index))
+                self.add_image(ax2, highlight=(j, min_index), animation=animation)
                 if self.items[j] < self.items[min_index]:
                     min_index = j
 
@@ -40,8 +39,7 @@ class SelectionSort(Sorter):
                 self.items[self.current_index], self.items[min_index] = (
                     self.items[min_index], self.items[self.current_index])
                 self.states.append((self.items[:], self.current_index, min_index))
-                if animation:
-                    self.add_image(ax2, highlight=(self.current_index, min_index))
+                self.add_image(ax2, highlight=(self.current_index, min_index), animation=animation)
 
             self.current_index += 1
         else:

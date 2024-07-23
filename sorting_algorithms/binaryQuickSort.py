@@ -24,24 +24,19 @@ class BinaryQuickSort(Sorter):
 
         while left <= right:
             while left <= right and not (self.items[left] >> bit) & 1:
-                if animation:
-                    self.add_image(ax2, highlight=(left, right), range_highlight=(low, high))
+                self.add_image(ax2, highlight=(left, right), range_highlight=(low, high), animation=animation)
                 left += 1
             while left <= right and (self.items[right] >> bit) & 1:
-                if animation:
-                    self.add_image(ax2, highlight=(left, right), range_highlight=(low, high))
+                self.add_image(ax2, highlight=(left, right), range_highlight=(low, high), animation=animation)
                 right -= 1
             if left < right:
-                if animation:
-                    self.add_image(ax2, highlight=(left, right), range_highlight=(low, high))
+                self.add_image(ax2, highlight=(left, right), range_highlight=(low, high), animation=animation)
                 self.items[left], self.items[right] = self.items[right], self.items[left]
-                if animation:
-                    self.add_image(ax2, highlight=(left, right), range_highlight=(low, high))
+                self.add_image(ax2, highlight=(left, right), range_highlight=(low, high), animation=animation)
                 left += 1
                 right -= 1
 
-        if animation:
-            self.add_image(ax2, highlight=None, range_highlight=(low, high))
+        self.add_image(ax2, highlight=None, range_highlight=(low, high), animation=animation)
 
         self.binary_quick_sort(low, right, bit - 1, ax2, animation)
         self.binary_quick_sort(left, high, bit - 1, ax2, animation)

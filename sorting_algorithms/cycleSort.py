@@ -37,12 +37,10 @@ class CycleSort(Sorter):
             # Otherwise, put the item to the correct position
             while item == self.items[pos]:
                 pos += 1
-            if animation:
-                self.add_image(ax2, highlight=(cycle_start, pos))
+            self.add_image(ax2, highlight=(cycle_start, pos), animation=animation)
             self.items[pos], item = item, self.items[pos]
             # print(self.items)
-            if animation:
-                self.add_image(ax2, highlight=(cycle_start, pos))
+            self.add_image(ax2, highlight=(cycle_start, pos), animation=animation)
 
             # Rotate the rest of the cycle
             while pos != cycle_start:
@@ -53,30 +51,29 @@ class CycleSort(Sorter):
 
                 while item == self.items[pos]:
                     pos += 1
-                if animation:
-                    self.add_image(ax2, highlight=(cycle_start, pos))
+                self.add_image(ax2, highlight=(cycle_start, pos), animation=animation)
                 self.items[pos], item = item, self.items[pos]
                 # print(self.items)
-                if animation:
-                    self.add_image(ax2, highlight=(cycle_start, pos))
+                self.add_image(ax2, highlight=(cycle_start, pos), animation=animation)
 
-    def add_image(self, ax, highlight=None, range_highlight=None):
+    def add_image(self, ax, highlight=None, range_highlight=None, animation=True):
         # print(highlight, range_highlight) # TODO make it look like the bars are swapped
         # if highlight[0] != highlight[1]:
         #     print("nice")
         #     temp = self.items.copy()
         #     self.items[highlight[0]] = item
-        ax.set_xticks([]), ax.set_yticks([])
-        ax.axis('off')  # Remove axes
-        im2 = ax.bar(range(len(self.items)), self.items, align="edge", color='skyblue')
-        if range_highlight:
+        if animation:
+            ax.set_xticks([]), ax.set_yticks([])
+            ax.axis('off')  # Remove axes
+            im2 = ax.bar(range(len(self.items)), self.items, align="edge", color='skyblue')
+            if range_highlight:
 
-            for e in range(range_highlight[0], range_highlight[1] + 1):
-                im2[e].set_color('lightgrey')  # Highlight range being sorted
-        if highlight:
-            for e in highlight:
-                im2[e].set_color('orange')  # Highlight swapped bars
-        self.frames.append(im2)
+                for e in range(range_highlight[0], range_highlight[1] + 1):
+                    im2[e].set_color('lightgrey')  # Highlight range being sorted
+            if highlight:
+                for e in highlight:
+                    im2[e].set_color('orange')  # Highlight swapped bars
+            self.frames.append(im2)
         # if highlight[0] != highlight[1]:
         #     self.items = temp.copy()
 

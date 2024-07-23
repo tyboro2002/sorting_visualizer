@@ -2,7 +2,7 @@ from itemContainer import ItemContainer
 from settings import sorted_dir, add_sorting_size_to_name, animate, animations_dir, sort_filetype, animations_filetype, \
     size, buble_sort, radix_sort, insertion_sort, shufflers, gnome_sort, cocktail_shaker_sort, shell_sort, \
     selection_sort, heap_sort_max, heap_sort_min, quick_sort, merge_sort, gravity_sort, comb_sort, \
-    weak_heap_sort_min, weak_heap_sort_max, binary_quick_sort, pancake_sort, cycle_sort, circle_sort
+    weak_heap_sort_min, weak_heap_sort_max, binary_quick_sort, pancake_sort, cycle_sort, circle_sort, odd_even_sort
 from sorting_algorithms.binaryQuickSort import BinaryQuickSort
 from sorting_algorithms.bubleSort import BubbleSort
 from sorting_algorithms.circleSort import CircleSort
@@ -14,6 +14,7 @@ from sorting_algorithms.gravitySort import GravitySort
 from sorting_algorithms.heapSort import HeapSort
 from sorting_algorithms.insertionSort import InsertionSort
 from sorting_algorithms.mergeSort import MergeSort
+from sorting_algorithms.oddEvenSort import OddEvenSort
 from sorting_algorithms.pancakeSort import PancakeSort
 from sorting_algorithms.quickSort import QuickSort
 from sorting_algorithms.radixSorter import RadixSort
@@ -32,7 +33,6 @@ from sorting_algorithms.weakHeapSort import WeakHeapSort
 
 # Normal Algorithms
 # TODO Exchange Sort (looking forward or looking backward)
-# TODO Odd Even Sort
 # TODO Baiai Sort (TODO search explanation for this algorithm)
 # TODO Patience Sort
 # TODO Strand Sort
@@ -358,3 +358,17 @@ if __name__ == "__main__":
                 (f"_{len(item_container)}" if add_sorting_size_to_name else "") + animations_filetype
             )
             print("done circle sort for " + shuffler.__name__)
+
+        if odd_even_sort:
+            print("starting odd even sort for " + shuffler.__name__)
+            OddEvenSort(
+                item_container,
+                shuffler,
+            ).run(
+                sorted_filename=sorted_dir + "OddEvenSort/OddEvenSort_" + shuffler.__name__ +
+                (f"_{len(item_container)}" if add_sorting_size_to_name else "") + sort_filetype,
+                animate=animate,
+                animation_filename=animations_dir + 'OddEvenSort/OddEvenSort_' + shuffler.__name__ + "_animation" +
+                (f"_{len(item_container)}" if add_sorting_size_to_name else "") + animations_filetype
+            )
+            print("done odd even sort for " + shuffler.__name__)

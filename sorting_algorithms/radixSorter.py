@@ -30,8 +30,7 @@ class RadixSort(Sorter):
                 j -= 1
             self.items[j + 1] = key
 
-            if animation:
-                self.add_image(ax2, highlight=(i, j + 1))
+            self.add_image(ax2, highlight=(i, j + 1), animation=animation)
 
     def sort_step(self, ax2=None, animation=False):
         max_item = max(self.items)

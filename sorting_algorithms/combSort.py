@@ -29,17 +29,14 @@ class CombSort(Sorter):
 
             i = 0
             while i + gap < len(self.items):
-                if animation:
-                    self.add_image(ax2, highlight=(i, i + gap))
+                self.add_image(ax2, highlight=(i, i + gap), animation=animation)
                 if self.items[i] > self.items[i + gap]:
                     self.items[i], self.items[i + gap] = self.items[i + gap], self.items[i]
                     sorted = False
-                    if animation:
-                        self.add_image(ax2, highlight=(i, i + gap))
+                    self.add_image(ax2, highlight=(i, i + gap), animation=animation)
                 i += 1
 
-            if animation:
-                self.add_image(ax2, highlight=None)
+            self.add_image(ax2, highlight=None, animation=animation)
 
     def sort(self):
         self.comb_sort()

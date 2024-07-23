@@ -25,8 +25,7 @@ class GravitySort(Sorter):
         for num in self.items:
             counts[num] += 1
 
-        if animation:
-            self.add_image(ax2, highlight=[], range_highlight=(0, len(self.items) - 1))
+        self.add_image(ax2, highlight=[], range_highlight=(0, len(self.items) - 1), animation=animation)
 
         # Simulate gravity from right to left, placing largest items first
         index = len(self.items) - 1
@@ -34,14 +33,14 @@ class GravitySort(Sorter):
             while counts[height] > 0:
                 temp_items = self.items[:]
                 temp_items[index] = height
-                if animation:
-                    self.add_image(ax2, highlight=[index], range_highlight=(0, len(self.items) - 1))
+                self.add_image(ax2, highlight=[index], range_highlight=(0, len(self.items) - 1), animation=animation)
                 self.items[index] = height
                 counts[height] -= 1
                 index -= 1
 
-                if animation:
-                    self.add_image(ax2, highlight=[index + 1], range_highlight=(0, len(self.items) - 1))
+                self.add_image(
+                    ax2, highlight=[index + 1], range_highlight=(0, len(self.items) - 1), animation=animation
+                )
 
     def sort(self):
         self.gravity_sort()

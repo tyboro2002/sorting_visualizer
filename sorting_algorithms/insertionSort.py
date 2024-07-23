@@ -33,13 +33,11 @@ class InsertionSort(Sorter):
             while j >= 0 and self.items[j] > key:
                 self.items[j + 1], self.items[j] = self.items[j], self.items[j + 1]
                 j -= 1
-                if animation:
-                    self.add_image(ax2, highlight=(j + 1, self.i))
+                self.add_image(ax2, highlight=(j + 1, self.i), animation=animation)
 
             self.states.append((self.items, j + 1, self.i))
 
-            if animation:
-                self.add_image(ax2, highlight=(j + 1, self.i))
+            self.add_image(ax2, highlight=(j + 1, self.i), animation=animation)
 
             self.i += 1
         else:

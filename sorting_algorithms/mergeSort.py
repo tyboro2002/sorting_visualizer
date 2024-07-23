@@ -36,22 +36,19 @@ class MergeSort(Sorter):
             else:
                 self.items[k] = R[j]
                 j += 1
-            if animation:
-                self.add_image(ax2, highlight=(k,), range_highlight=(left, right))
+            self.add_image(ax2, highlight=(k,), range_highlight=(left, right), animation=animation)
             k += 1
 
         while i < n1:
             self.items[k] = L[i]
             i += 1
-            if animation:
-                self.add_image(ax2, highlight=(k,), range_highlight=(left, right))
+            self.add_image(ax2, highlight=(k,), range_highlight=(left, right), animation=animation)
             k += 1
 
         while j < n2:
             self.items[k] = R[j]
             j += 1
-            if animation:
-                self.add_image(ax2, highlight=(k,), range_highlight=(left, right))
+            self.add_image(ax2, highlight=(k,), range_highlight=(left, right), animation=animation)
             k += 1
 
     def merge_sort(self, left, right, ax2=None, animation=False):

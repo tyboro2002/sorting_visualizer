@@ -23,13 +23,11 @@ class GnomeSort(Sorter):
             if index == 0:
                 index += 1
             if self.items[index] >= self.items[index - 1]:
-                if animation:
-                    self.add_image(ax2, highlight=(index, index - 1))
+                self.add_image(ax2, highlight=(index, index - 1), animation=animation)
                 index += 1
             else:
                 self.items[index], self.items[index - 1] = self.items[index - 1], self.items[index]
-                if animation:
-                    self.add_image(ax2, highlight=(index, index - 1))
+                self.add_image(ax2, highlight=(index, index - 1), animation=animation)
                 index -= 1
 
     def sort(self):

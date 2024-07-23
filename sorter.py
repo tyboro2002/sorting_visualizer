@@ -44,17 +44,18 @@ class Sorter:
         plt.close(fig)
         return ani
 
-    def add_image(self, ax, highlight=None, range_highlight=None):
-        ax.set_xticks([]), ax.set_yticks([])
-        ax.axis('off')  # Remove axes
-        im2 = ax.bar(range(len(self.items)), self.items, align="edge", color='skyblue')
-        if range_highlight:
-            for e in range(range_highlight[0], range_highlight[1] + 1):
-                im2[e].set_color('lightgrey')  # Highlight range being sorted
-        if highlight:
-            for e in highlight:
-                im2[e].set_color('orange')  # Highlight swapped bars
-        self.frames.append(im2)
+    def add_image(self, ax, highlight=None, range_highlight=None, animation=True):
+        if animation:
+            ax.set_xticks([]), ax.set_yticks([])
+            ax.axis('off')  # Remove axes
+            im2 = ax.bar(range(len(self.items)), self.items, align="edge", color='skyblue')
+            if range_highlight:
+                for e in range(range_highlight[0], range_highlight[1] + 1):
+                    im2[e].set_color('lightgrey')  # Highlight range being sorted
+            if highlight:
+                for e in highlight:
+                    im2[e].set_color('orange')  # Highlight swapped bars
+            self.frames.append(im2)
 
     def run(
             self,

@@ -34,11 +34,9 @@ class ShellSort(Sorter):
                 while j >= gap and self.items[j - gap] > temp:
                     self.items[j], self.items[j - gap] = self.items[j - gap], self.items[j]
                     j -= gap
-                    if animation:
-                        self.add_image(ax2, highlight=(j, j-gap))
+                    self.add_image(ax2, highlight=(j, j-gap), animation=animation)
                 self.items[j] = temp
-                if animation:
-                    self.add_image(ax2, highlight=(j, j-gap))
+                self.add_image(ax2, highlight=(j, j-gap), animation=animation)
             gap //= 2
 
     def sort(self):

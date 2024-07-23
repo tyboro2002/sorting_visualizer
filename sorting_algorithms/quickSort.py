@@ -35,12 +35,10 @@ class QuickSort(Sorter):
         mid = (low + high) // 2
         median_index = self.median_of_three(low, mid, high)
         # Add image to highlight the median selection
-        if animation:
-            self.add_image(ax2, highlight=(low, mid, high), range_highlight=(low, high))
+        self.add_image(ax2, highlight=(low, mid, high), range_highlight=(low, high), animation=animation)
         self.items[median_index], self.items[high] = self.items[high], self.items[median_index]
         # Add image to highlight the median selection
-        if animation:
-            self.add_image(ax2, highlight=(low, mid, high), range_highlight=(low, high))
+        self.add_image(ax2, highlight=(low, mid, high), range_highlight=(low, high), animation=animation)
         pivot = self.items[high]
         i = low - 1
 
@@ -48,12 +46,10 @@ class QuickSort(Sorter):
             if self.items[j] < pivot:
                 i += 1
                 self.items[i], self.items[j] = self.items[j], self.items[i]
-                if animation:
-                    self.add_image(ax2, highlight=(i, j), range_highlight=(low, high))
+                self.add_image(ax2, highlight=(i, j), range_highlight=(low, high), animation=animation)
 
         self.items[i + 1], self.items[high] = self.items[high], self.items[i + 1]
-        if animation:
-            self.add_image(ax2, highlight=(i + 1, high), range_highlight=(low, high))
+        self.add_image(ax2, highlight=(i + 1, high), range_highlight=(low, high), animation=animation)
         return i + 1
 
     def quick_sort(self, low, high, ax2=None, animation=False):
