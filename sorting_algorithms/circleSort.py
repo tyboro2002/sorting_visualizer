@@ -6,10 +6,20 @@ class CircleSort(Sorter):
     """
     Sort the data using circle sort.
 
-    1. Divide the list into pairs of elements.
-    2. Compare each pair of elements and swap if necessary.
-    3. Recursively apply the same process to each half of the list.
-    4. Repeat until the list is sorted.
+    1. Divide the Array:
+        a. The array is divided into two halves, which are not necessarily contiguous. The first half contains elements
+        from the start to the middle of the array, and the second half contains elements from the end to the middle of
+        the array.
+    2. Compare and Swap:
+        a. Compare elements in pairs from the two halves. For example, compare the first element of the first half with
+        the last element of the second half, the second element of the first half with the second last element of the
+        second half, and so on.
+        b. If the first element is greater than the second element in any pair, they are swapped.
+    3. Recursive Call:
+        a. Recursively apply the same process to the two halves.
+    4. Conquer Phase:
+        a. After completing the comparisons and swaps for all elements, the array should be more sorted than before.
+        b. Repeat the entire process until no more swaps are needed.
     """
 
     def __init__(self, itemContainer: ItemContainer, shuffle_method):
